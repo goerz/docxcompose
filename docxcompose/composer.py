@@ -250,6 +250,8 @@ class Composer(object):
             our_style_id = self.mapped_style_id(style_id)
             if our_style_id not in our_style_ids:
                 style_element = deepcopy(doc.styles.element.get_by_id(style_id))
+                if style_element is None:
+                    continue
                 self.doc.styles.element.append(style_element)
                 self.add_numberings(doc, style_element)
                 # Also add linked styles
